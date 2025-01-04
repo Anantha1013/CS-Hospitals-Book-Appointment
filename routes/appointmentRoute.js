@@ -28,8 +28,14 @@ const router = express.Router();
  *                 properties:
  *                   name:
  *                     type: string
+ *                   dept_name:
+ *                     type: string
+ *                   ph_no:
+ *                     type: string
  *                   speciality:
  *                     type: string
+ *                   reg_no:
+ *                     type: string              
  *       500:
  *         description: Some server error
  */
@@ -49,7 +55,7 @@ const router = express.Router();
  *             properties:
  *               doctorId:
  *                 type: string
- *               patientName:
+ *               patientId:
  *                 type: string
  *               appointmentDate:
  *                 type: string

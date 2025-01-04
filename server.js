@@ -19,17 +19,6 @@ app.use(
     swaggerUi.serve,
     swaggerUi.setup(specs,{explorer : true})
 );
-app.get('/patients', async (req, res) => {
-  try {
-    const patients = await Patient.find();  
-    res.json(patients);  
-  } catch (err) {
-    console.error("Error fetching patients:", err);
-    res.status(500).send("Error fetching patients");
-  }
-});
-
-
 app.use('/v1',registerRoute);
 app.use('/v1',searchRoute);
 app.use('/v1',appointmentRoute);
