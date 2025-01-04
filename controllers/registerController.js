@@ -1,4 +1,4 @@
-const {Patient}=require('../models/patients.js');
+const Patient=require('../models/patients.js');
 const unique_UHID=require('../utils/uhid.js');
 
 //registering patients
@@ -17,7 +17,7 @@ exports.registerPatient=async(req,res)=>{
         const patient_info={
             "firstName":req.body.firstName,
             "lastName":req.body.lastName,
-            "UHID":unique_UHID,
+            "UHID":await unique_UHID(),
             "age":Number(req.body.age),
             "totalAppointments":1,//initially while registering set to 1
         };

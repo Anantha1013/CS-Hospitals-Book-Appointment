@@ -11,7 +11,7 @@ const patientSchema = new mongoose.Schema({
   },
   UHID: {
     type: String,
-    default: "1234",
+    unique:true,
   },
   age: {
     type: Number,

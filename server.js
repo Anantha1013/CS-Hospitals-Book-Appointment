@@ -24,7 +24,7 @@ app.get('/patients', async (req, res) => {
 
 
 app.use('/v1',registerRoute);
-// app.use('/v1',searchRoute);
+app.use('/v1',searchRoute);
 
 app.listen(process.env.PORT, () => {
   console.log("Server Listening on Port " + process.env.PORT);
