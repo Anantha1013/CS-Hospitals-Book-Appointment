@@ -33,7 +33,7 @@ exports.registerPatient=async(req,res)=>{
         console.log(error);
         return res.status(502).json({
             success:false,
-            message:error
+            message:"Some server side error"
         });
     }
 };
