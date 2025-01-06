@@ -1,15 +1,7 @@
-const bcrypt=require('bcrypt');
-
-const unique_UHID=async()=>{
-    const timeStamp=Date.now().toString();
-    const saltRounds=10;
-
-    let uhid=await bcrypt.hash(timeStamp,saltRounds);
-    uhid=uhid.replace(/\W/g,'');//finds all non alphanumeric character(\W) and removes them
-    console.log(uhid);
-    return `PAT${uhid}`;
-}
-
-module.exports=unique_UHID;
-
-
+const unique_UHID = () => {
+    const randomNumber = Math.floor(100000 + Math.random() * 900000); // Generates a number between 100000 and 999999
+    return `PAT${randomNumber}`;
+  };
+  
+  module.exports = unique_UHID;
+  

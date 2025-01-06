@@ -1,34 +1,67 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const doctorSchema = new mongoose.Schema({
-    name : {
-        type : String,
-        require : true,
+const appointmentSchema = new mongoose.Schema(
+{
+    patientId: { 
+        type: String, 
+        required: true 
     },
-    dept_name : {
-        type : String,
-        require : true,
+    patientName: { 
+        type: String, 
+        required: true 
     },
-    ph_no : {
-        type : String,
-        require : true,
+    appointmentDate: { 
+        type: Date, 
+        required: true 
     },
-    speciality : {
-        type : String,
-        require : true,
+    appointmentTime: { 
+        type: String, 
+        required: true 
     },
-    reg_no : {
-        type : String,
-        require : true,
+}
+);
+const doctorSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true, 
+      minlength: 3,
     },
-    appointments : {
-        type : Array,
-        default : [],
-    }
-},{
-    collection : 'doctors',
-});
+    dept_name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    ph_no: {
+      type: String,
+      required: true,
+      unique: true, 
+      validate: {
+        validator: function (v) {
+          return /^\d{10}$/.test(v); 
+        },
+        message: (props) => `${props.value} is not a valid 10-digit phone number.`,
+      },
+    },
+    speciality: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    reg_no: {
+      type: String,
+      required: true,
+      unique: true,
+      match: /^REG-\d{6}$/,
+    },
+    appointments: [appointmentSchema],
+  },
+  {
+    collection: 'doctors',
+  }
+);
 
-const Doctor = mongoose.model("Doctor",doctorSchema);
+const Doctor = mongoose.model('Doctor', doctorSchema);
 
 module.exports = Doctor;
