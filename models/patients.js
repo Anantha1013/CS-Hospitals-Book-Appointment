@@ -1,34 +1,30 @@
 const mongoose = require('mongoose');
 
 const patientSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: {
-    type: String,
-    required: true,
-  },
   UHID: {
     type: String,
-    unique:true,
+    required: true,
+    unique: true,
   },
-  age: {
-    type: Number,
+  name: {
+    type: String,
+    required: true,
+  },
+  type: {
+    type: String,
+    enum: ['out-patient', 'in-patient'], 
     required: true,
   },
   totalAppointments: {
     type: Number,
-    required: true,
+    default: 0,
   },
-  lastVisit: {
-    type: Date,
-    default: Date.now,
+  bedDetails: {
+    bedId: { type: mongoose.Schema.Types.ObjectId, ref: 'Bed' }, 
+    bedType: { type: String, enum: ['general', 'ICU', 'private'] },
   },
-}, {
-  collection: 'patients', 
 });
 
-const Patient = mongoose.model("Patient", patientSchema);
+const Patient = mongoose.model('Patient', patientSchema);
 
 module.exports = Patient;

@@ -34,16 +34,15 @@ const doctorSchema = new mongoose.Schema(
       trim: true,
     },
     ph_no: {
-      type: String,
-      required: true,
-      unique: true, 
-      validate: {
-        validator: function (v) {
-          return /^\d{10}$/.test(v); 
-        },
-        message: (props) => `${props.value} is not a valid 10-digit phone number.`,
+        type: String,
+        required: true,
+        validate: {
+          validator: function (v) {
+            return /^[+]?\d{1,4}[-\s]?\(?\d{1,4}\)?[-\s]?\d{1,4}[-\s]?\d{1,4}$/.test(v);
+          },
+          message: props => `${props.value} is not a valid phone number!`
+        }
       },
-    },
     speciality: {
       type: String,
       required: true,

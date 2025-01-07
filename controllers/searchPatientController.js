@@ -22,7 +22,6 @@ exports.searchPatient=async(req,res)=>{
         }
 
         else{
-
             //redirect to register
             return res.status(200).json({
                 success:false,
