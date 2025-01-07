@@ -1,19 +1,21 @@
 const mongoose = require('mongoose');
-
 const patientSchema = new mongoose.Schema({
   UHID: {
     type: String,
     required: true,
     unique: true,
   },
-  name: {
+  firstName: {
     type: String,
     required: true,
   },
-  type: {
+  lastName: {
     type: String,
-    enum: ['out-patient', 'in-patient'], 
     required: true,
+  },
+  Type: {
+    type: String,
+    enum: ['out-patient', 'in-patient'],
   },
   totalAppointments: {
     type: Number,
