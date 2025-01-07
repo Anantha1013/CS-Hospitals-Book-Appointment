@@ -23,6 +23,8 @@ const router=express.Router();
  *                 type: string
  *               age:
  *                 type: number
+ *               phoneNumber:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Patient registered successfully
@@ -35,6 +37,8 @@ const router=express.Router();
  *                   type: boolean
  *                 message:
  *                   type: string
+ *       444:
+ *         description:Invalid phone number
  *       502:
  *         description: Some server error
  */

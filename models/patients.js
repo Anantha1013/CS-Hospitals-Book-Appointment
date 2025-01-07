@@ -23,8 +23,14 @@ const patientSchema = new mongoose.Schema({
   },
   lastVisit: {
     type: Date,
-    default: Date.now,
+    default:Date.now,
   },
+  phoneNumber: {
+    type: String,
+    required: true,
+    unique: true,
+  }
+
 }, {
   collection: 'patients', 
 });
