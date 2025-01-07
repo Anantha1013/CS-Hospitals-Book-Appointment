@@ -76,6 +76,7 @@ const router = express.Router();
  *         description: Some server error
  */
 
+router.get('/departments',bookAppointController.departmentsAvailable);
 router.get('/doctors', bookAppointController.doctorsAvailable);
 router.post('/appointment', bookAppointController.bookAppointment);
 

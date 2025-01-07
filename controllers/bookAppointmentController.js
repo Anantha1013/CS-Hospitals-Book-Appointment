@@ -1,7 +1,28 @@
 const Doctor = require('../models/doctors');
 const Patient = require('../models/patients');
 const Bed = require('../models/bed');
+const Department = require('../models/departments');
 
+exports.departmentsAvailable = async(req,res) => {
+  try{
+
+    const depts=await Department.find({},"dept_name");
+    const departmentNames = depts.map(dept => dept.dept_name);
+
+    console.log(departmentNames);
+
+    return res.status(200).json({
+      message:"ok",
+      departments:departmentNames
+    });
+  }
+  catch(error){
+    console.log(error);
+    return res.status(505).json({
+      message:"Some error in the server side"
+    });
+  }
+}
 exports.doctorsAvailable = async (req, res) => {
   try {
     const { appointmentDate, appointmentTime, dept_name } = req.query;

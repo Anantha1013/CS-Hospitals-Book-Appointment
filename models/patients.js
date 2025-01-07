@@ -23,6 +23,18 @@ const patientSchema = new mongoose.Schema({
     bedId: { type: mongoose.Schema.Types.ObjectId, ref: 'Bed' }, 
     bedType: { type: String, enum: ['general', 'ICU', 'private'] },
   },
+  lastVisit: {
+    type: Date,
+    default:Date.now,
+  },
+  phoneNumber: {
+    type: String,
+    required: true,
+    unique: true,
+  }
+
+}, {
+  collection: 'patients',
 });
 
 const Patient = mongoose.model('Patient', patientSchema);

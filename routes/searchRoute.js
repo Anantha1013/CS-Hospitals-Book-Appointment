@@ -39,6 +39,8 @@ const router=express.Router();
  *                   type: number
  *                 lastVisit:
  *                   type: date
+ *                 phoneNumber:
+ *                   type: string
  *       201:
  *         description: Patient not found
  *         content:
